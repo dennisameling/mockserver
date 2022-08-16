@@ -33,10 +33,10 @@ jobs:
         id: check_for_new_version
         
         run: |
-          LATEST_TAG_MOCKSERVER=$(jq -n '${{ steps.get_mockserver_tags.outputs.data }} | .[0].name')
+          LATEST_TAG_MOCKSERVER=$(jq -n --raw-output '${{ steps.get_mockserver_tags.outputs.data }} | .[0].name')
           echo "Latest tag on mock-server/mockserver: ${LATEST_TAG_MOCKSERVER}"
 
-          LATEST_TAG_DENNISAMELING=$(jq -n '${{ steps.get_dennisameling_tags.outputs.data }} | .[0].name')
+          LATEST_TAG_DENNISAMELING=$(jq -n --raw-output '${{ steps.get_dennisameling_tags.outputs.data }} | .[0].name')
           echo "Latest tag on dennisameling/mockserver: ${LATEST_TAG_DENNISAMELING}"
 
           if [[ "${LATEST_TAG_MOCKSERVER}" == "${LATEST_TAG_DENNISAMELING}-multi-arch" ]]; then
