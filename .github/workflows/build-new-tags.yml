@@ -39,7 +39,7 @@ jobs:
           LATEST_TAG_DENNISAMELING=$(jq -n --raw-output '${{ steps.get_dennisameling_tags.outputs.data }} | .[0].name')
           echo "Latest tag on dennisameling/mockserver: ${LATEST_TAG_DENNISAMELING}"
 
-          if [[ "${LATEST_TAG_MOCKSERVER}" == "${LATEST_TAG_DENNISAMELING}" ]]; then
+          if [[ "${LATEST_TAG_MOCKSERVER}-multi-arch" == "${LATEST_TAG_DENNISAMELING}" ]]; then
             echo "Latest tag already found on dennisameling/mockserver. Won't build."
             exit 0
           fi
